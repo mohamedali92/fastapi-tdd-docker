@@ -2,6 +2,7 @@ from app.models.pydantic import SummaryPayloadSchema
 from app.models.tortoise import TextSummary
 from typing import Optional, List
 
+
 async def post(paylaod: SummaryPayloadSchema) -> int:
     summary = TextSummary(
         url=paylaod.url,
@@ -22,5 +23,3 @@ async def get(id: int) -> Optional[dict]:
 async def get_all() -> List[TextSummary]:
     summaries = await TextSummary.all().values()
     return summaries
-
-
